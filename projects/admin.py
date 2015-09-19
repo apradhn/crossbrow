@@ -32,7 +32,7 @@ class FeatureAdmin(admin.ModelAdmin):
 
 
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('description', 'feature')
+    list_display = ('description', 'feature', 'result')
 
 
 class BrowserAdmin(admin.ModelAdmin):
