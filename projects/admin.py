@@ -12,7 +12,28 @@ class FeatureInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     inlines = [FeatureInline]
 
+
+class TestInline(admin.TabularInline):
+    model = Test
+    extra = 3
+
+
+class FeatureAdmin(admin.ModelAdmin):
+    inlines = [TestInline]
+    list_display = ('name', 'project')
+
+
+class BrowserInline(admin.TabularInline):
+    model = Browser
+    extra = 3
+
+
+class TestAdmin(admin.ModelAdmin):
+    inlines = [BrowserInline]
+    list_display = ('description', 'feature')
+
+
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Feature)
+admin.site.register(Feature, FeatureAdmin)
+admin.site.register(Test, TestAdmin)
 admin.site.register(Browser)
-admin.site.register(Test)

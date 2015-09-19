@@ -21,7 +21,7 @@ class Test(models.Model):
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return self.description
 
 
 class Browser(models.Model):
