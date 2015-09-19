@@ -29,6 +29,7 @@ class TestAdmin(admin.ModelAdmin):
 
 class BrowserAdmin(admin.ModelAdmin):
     fields = ['name', 'operating_system', 'version', 'project']
+    list_display = ('name', 'operating_system', 'project')
 
 
 admin.site.register(Project, ProjectAdmin)
