@@ -16,6 +16,11 @@ class Feature(models.Model):
     def __str__(self):
         return self.name
 
+    def total_tests(self):
+        return self.test_set.count()
+    total_tests.admin_order_field = 'total_tests'
+    total_tests.short_description = 'Total Tests'
+
 
 class Test(models.Model):
     feature = models.ForeignKey(Feature)

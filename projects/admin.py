@@ -23,7 +23,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class TestInline(admin.TabularInline):
     model = Test
-    extra = 3
+    extra = 1
 
 
 class FeatureAdmin(admin.ModelAdmin):
