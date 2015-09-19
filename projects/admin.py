@@ -27,7 +27,11 @@ class TestAdmin(admin.ModelAdmin):
     list_display = ('description', 'feature')
 
 
+class BrowserAdmin(admin.ModelAdmin):
+    fields = ['name', 'operating_system', 'version', 'project']
+
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Feature, FeatureAdmin)
 admin.site.register(Test, TestAdmin)
-admin.site.register(Browser)
+admin.site.register(Browser, BrowserAdmin)
