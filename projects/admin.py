@@ -6,11 +6,17 @@ from .models import Project, Feature, Browser, Test
 
 class FeatureInline(admin.TabularInline):
     model = Feature
-    extra = 3
+    extra = 1
+
+
+class BrowserInline(admin.TabularInline):
+    model = Browser
+    extra = 1
+    fields = ('name', 'operating_system', 'version')
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    inlines = [FeatureInline]
+    inlines = [FeatureInline, BrowserInline]
 
 
 class TestInline(admin.TabularInline):
