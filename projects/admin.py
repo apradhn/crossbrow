@@ -7,12 +7,14 @@ from .models import Project, Feature, Browser, Test
 class FeatureInline(admin.TabularInline):
     model = Feature
     extra = 1
+    show_change_link = True
 
 
 class BrowserInline(admin.TabularInline):
     model = Browser
     extra = 1
     fields = ('name', 'operating_system', 'version')
+    show_change_link = True
 
 
 class ProjectAdmin(admin.ModelAdmin):

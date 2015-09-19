@@ -11,6 +11,7 @@ class Project(models.Model):
 class Feature(models.Model):
     project = models.ForeignKey(Project)
     name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.name
