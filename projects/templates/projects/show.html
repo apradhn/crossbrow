@@ -1,1 +1,10 @@
-{{ project }}
+<h1>{{ project.name }}</h1>
+
+<ul>
+    {% if features %}
+        {% for feature in features %}
+            <li>{{ feature.name }}</li>
+        {% endfor %}
+    {% endif %}
+</ul>
+

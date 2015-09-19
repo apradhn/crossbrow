@@ -16,11 +16,13 @@ def index(request):
 
 def show(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
+    features = project.feature_set.all()
     return render(
         request,
         'projects/show.html',
         {
-            'project': project
+            'project': project,
+            'features': features
         }
     )
 
