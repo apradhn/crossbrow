@@ -25,7 +25,7 @@ class Test(models.Model):
 
 
 class Browser(models.Model):
-    test = models.ForeignKey(Test)
+    project = models.ForeignKey(Project, null=True)
     name = models.CharField(max_length=200, default='browser name')
     version = models.CharField(max_length=200)
     operating_system = models.CharField(max_length=200)

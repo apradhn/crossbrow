@@ -23,13 +23,7 @@ class FeatureAdmin(admin.ModelAdmin):
     list_display = ('name', 'project')
 
 
-class BrowserInline(admin.TabularInline):
-    model = Browser
-    extra = 3
-
-
 class TestAdmin(admin.ModelAdmin):
-    inlines = [BrowserInline]
     list_display = ('description', 'feature')
 
 
