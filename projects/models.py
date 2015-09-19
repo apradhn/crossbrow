@@ -25,10 +25,10 @@ class Test(models.Model):
 
 
 class Browser(models.Model):
-    CHROME = 'C'
-    FIREFOX = 'FF'
-    IE = 'IE'
-    SAFARI = 'S'
+    CHROME = 'Google Chrome'
+    FIREFOX = 'Mozilla Firefox'
+    IE = 'Internet Explorer'
+    SAFARI = 'Safari'
     BROWSER_CHOICES = (
         (CHROME, 'Google Chrome'),
         (FIREFOX, 'Mozilla Firefox'),
@@ -52,7 +52,9 @@ class Browser(models.Model):
                             choices=BROWSER_CHOICES,
                             default=CHROME)
     version = models.CharField(max_length=200, blank=True)
-    operating_system = models.CharField(max_length=200, choices=OS_CHOICES)
+    operating_system = models.CharField(max_length=200,
+                                        choices=OS_CHOICES,
+                                        default=OSX)
 
     def __str__(self):
         return self.name
