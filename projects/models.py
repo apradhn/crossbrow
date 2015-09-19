@@ -25,16 +25,17 @@ class Test(models.Model):
 
 
 class Browser(models.Model):
-    CHROME = 'C',
-    FIREFOX = 'FF',
+    CHROME = 'C'
+    FIREFOX = 'FF'
     IE = 'IE'
     SAFARI = 'S'
     BROWSER_CHOICES = (
-        (CHROME, 'Chrome'),
+        (CHROME, 'Google Chrome'),
         (FIREFOX, 'Mozilla Firefox'),
         (IE, 'Internet Explorer'),
         (SAFARI, 'Safari')
     )
+
     OSX = 'OSX'
     WIN7 = 'Win7'
     WIN8 = 'Win8'
@@ -45,11 +46,12 @@ class Browser(models.Model):
         (WIN8, 'Windows 8'),
         (WIN10, 'Windows 10'),
     )
+
     project = models.ForeignKey(Project, null=True)
     name = models.CharField(max_length=200,
                             choices=BROWSER_CHOICES,
                             default=CHROME)
-    version = models.CharField(max_length=200)
+    version = models.CharField(max_length=200, blank=True)
     operating_system = models.CharField(max_length=200, choices=OS_CHOICES)
 
     def __str__(self):
