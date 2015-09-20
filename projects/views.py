@@ -4,7 +4,7 @@ from .models import Project
 from browsers.models import Browser
 
 
-def index(request):
+def projects_index(request):
     projects = get_list_or_404(Project)
     return render(
         request,
@@ -15,13 +15,13 @@ def index(request):
     )
 
 
-def show(request, project_id):
+def project_detail(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     features = project.feature_set.all()
     browsers = project.browser_set.all()
     return render(
         request,
-        'projects/show.html',
+        'projects/detail.html',
         {
             'project': project,
             'features': features,
@@ -30,7 +30,7 @@ def show(request, project_id):
     )
 
 
-def browsers(request, project_id):
+def browsers_index(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     browsers = get_list_or_404(project.browser_set)
     return render(
@@ -43,7 +43,7 @@ def browsers(request, project_id):
     )
 
 
-def browser_show(request, project_id, browser_id):
+def browser_detail(request, project_id, browser_id):
     project = get_object_or_404(Project, pk=project_id)
     browser = get_object_or_404(Browser, pk=browser_id)
     return render(
