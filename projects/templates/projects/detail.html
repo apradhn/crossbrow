@@ -1,19 +1,24 @@
 <h1>{{ project.name }}</h1>
 
-<ul>
-    {% if features %}
-        {% for feature in features %}
-            <li>{{ feature.name }}</li>
-        {% endfor %}
-    {% endif %}
-</ul>
 
+{% if features %}
+<h2>Features</h2>
 <ul>
-    {% if browsers %}
-        {% for browser in browsers %}
-            <li>{{ browser.name }}, {{ browser.operating_system }}</li>
-        {% endfor %}
-    {% endif %}
+    {% for feature in features %}
+        <li>{{ feature.name }}</li>
+    {% endfor %}
 </ul>
+{% endif %}
+
+
+{% if browsers %}
+<h2>Browsers</h2>
+<ul>
+    {% for browser in browsers %}
+        <li>{{ browser.name }}, {{ browser.operating_system }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 
 
