@@ -1,0 +1,8 @@
+<h1>{{ project.name }}</h1>
+<h2>{{ feature.name }}</h2>
+<h3>Test Cases</h3>
+<ul>
+    {% for testcase in testcase_list %}
+        <li>{{ testcase.description }} <a href='{% url "projects:testcase_detail" project.id feature.id testcase.id %}'>View</a></li>
+    {% endfor %}
+</ul>

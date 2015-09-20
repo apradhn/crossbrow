@@ -18,9 +18,12 @@
                 {{ browser.name }}
                 <em>{{ browser.operating_system }}</em>
                 {% csrf_token %}
-                    <input type="radio" name="result" id="browser-result-pass" value="Pass" />
+                    <input type="radio" name="browser-result" id="browser-result-pass" value="Pass" checked/>
                     <label for="browser-result-pass">Pass</label>
-                    <input type="radio" name="result" id="browser-result-fail" value="Fail" />
+                    <input type="radio" name="browser-result" id="browser-result-fail" value="Fail" />
+                    <input type="hidden" name="project-id" value="{{ project.id }}">
+                    <input type="hidden" name="feature-id" value="{{ feature.id }}">
+                    <input type="hidden" name="test-case-id" value="{{ test_case.id }}">
                     <label for="browser-result-fail">Fail</label>
                 <input type="submit" value="Update">
             </form>
