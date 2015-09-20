@@ -23,6 +23,10 @@ class ProjectDetailView(generic.DetailView):
 class BrowserIndexView(generic.ListView):
     model = Browser
 
+    def get_queryset(self):
+        return Browser.objects.filter(
+            project__pk=self.kwargs['project_pk'])
+
     def get_context_data(self, **kwargs):
         context = super(BrowserIndexView, self).get_context_data(**kwargs)
         context['project'] = get_object_or_404(
@@ -45,10 +49,12 @@ class BrowserDetailView(generic.DetailView):
 class FeatureIndexView(generic.ListView):
     model = Feature
 
+    def get_queryset(self):
+        return Feature.objects.filter(
+            project__pk=self.kwargs['project_pk'])
+
     def get_context_data(self, **kwargs):
         context = super(FeatureIndexView, self).get_context_data(**kwargs)
-        context['feature_list'] = Feature.objects.filter(
-            project__pk=self.kwargs['project_pk'])
         context['project'] = get_object_or_404(
             Project,
             pk=self.kwargs['project_pk'])
