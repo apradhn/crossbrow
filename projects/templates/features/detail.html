@@ -4,7 +4,8 @@
     <h3>Test Cases</h3>
     <ul>
         {% for test_case in test_cases %}
-            <li>{{ test_case.description }}</li>
+            <li>{{ test_case.description }} <br>
+            <a href="{% url 'projects:test_case_detail' %}">View</a></li>
         {% endfor %}
     </ul>
 

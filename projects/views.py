@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render, get_list_or_404
 from .models import Project
 from browsers.models import Browser
 from features.models import Feature
+from test_cases.models import TestCase
 
 
 def projects_index(request):
@@ -73,7 +74,7 @@ def features_index(request, project_id):
 def feature_detail(request, project_id, feature_id):
     project = get_object_or_404(Project, pk=project_id)
     feature = get_object_or_404(Feature, pk=feature_id)
-    test_cases = feature.test_case_set
+    test_cases = feature.testcase_set.all()
     return render(
         request,
         'features/detail.html',
@@ -83,3 +84,33 @@ def feature_detail(request, project_id, feature_id):
             'test_cases': test_cases
         }
     )
+
+
+def test_cases_index(request, project_id, feature_id):
+    project = get_object_or_404(Project, pk=project_id)
+    feature = get_object_or_404(Feature, pk=feature_id)
+    test_cases = feature.testcase_set.all()
+    return render(
+        request,
+        'test_cases/index.html',
+        {
+            'project': project,
+            'feature': feature,
+            'test_cases': test_cases
+        }
+
+    )
+
+
+def test_case_detail(request, project_id, feature_id, test_case_id):
+    project = get_object_or_404(Project, pk=project_id)
+    feature = get_object_or_404(Feature, pk=feature_id)
+    test_case = get_object_or_404(TestCase, pk=test_case_id)
+    return render(
+        request,
+        'test_cases/detail.html',
+        {
+            'project': project,
+            'feature': feature,
+            'test_case': test_case
+        })

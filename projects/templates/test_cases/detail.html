@@ -1,0 +1,11 @@
+<h1>{{ project.name }}</h1>
+<h2>{{ feature.name }}</h2>
+<h3>Test Case</h3>
+<h4>Description</h4>
+<p>{{ test_case.description }}</p>
+<h4>Result</h4>
+{% if test_case.result %}
+    <p>{{ test_case.result }}</p>
+{% else %}
+    <p>None</p>
+{% endif %}
