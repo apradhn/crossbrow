@@ -9,3 +9,22 @@
 {% else %}
     <p>None</p>
 {% endif %}
+{% if browsers %}
+    <h3> Browsers</h3>
+    <ul>
+    {% for browser in browsers %}
+        <li>
+            <form action='{% url "browsers:update" browser.id %}' method="post">
+                {{ browser.name }}
+                <em>{{ browser.operating_system }}</em>
+                {% csrf_token %}
+                    <input type="radio" name="result" id="browser-result-pass" value="Pass" />
+                    <label for="browser-result-pass">Pass</label>
+                    <input type="radio" name="result" id="browser-result-fail" value="Fail" />
+                    <label for="browser-result-fail">Fail</label>
+                <input type="submit" value="Update">
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

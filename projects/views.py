@@ -106,11 +106,13 @@ def test_case_detail(request, project_id, feature_id, test_case_id):
     project = get_object_or_404(Project, pk=project_id)
     feature = get_object_or_404(Feature, pk=feature_id)
     test_case = get_object_or_404(TestCase, pk=test_case_id)
+    browsers = get_list_or_404(project.browser_set)
     return render(
         request,
         'test_cases/detail.html',
         {
             'project': project,
             'feature': feature,
-            'test_case': test_case
+            'test_case': test_case,
+            'browsers': browsers
         })
