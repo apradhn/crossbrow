@@ -7,10 +7,10 @@ urlpatterns = [
     url(r'^$',
         views.ProjectIndexView.as_view(),
         name='project_index'),
-    # /projects/create
-    url(r'create/^$',
+    # /projects/add
+    url(r'add/$',
         views.ProjectCreateView.as_view(),
-        name='project_create'),
+        name='project_add'),
     # /projects/<project_pk>/browsers/
     url(r'(?P<project_pk>[0-9]+)/browsers/$',
         views.BrowserIndexView.as_view(),

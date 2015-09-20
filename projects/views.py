@@ -4,6 +4,7 @@ from browsers.models import Browser
 from features.models import Feature
 from test_cases.models import TestCase
 from django.views import generic
+from django.views.generic.edit import CreateView
 
 
 class ProjectIndexView(generic.ListView):
@@ -18,6 +19,11 @@ class ProjectDetailView(generic.DetailView):
         context['feature_list'] = context['object'].feature_set.all()
         context['browser_list'] = context['object'].browser_set.all()
         return context
+
+
+class ProjectCreateView(CreateView):
+    model = Project
+    fields = ['name']
 
 
 class BrowserIndexView(generic.ListView):
