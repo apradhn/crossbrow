@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'projects',
     'features',
     'browsers',
-    'test_cases'
+    'test_cases',
+    'crossbrow',
 )
 
 MIDDLEWARE_CLASSES = (

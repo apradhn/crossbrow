@@ -1,0 +1,10 @@
+<h1>CrossBrow</h1>
+
+{% if project_list %}
+    <ul>
+        {% for project in project_list %}
+            <li><a href='{% url "projects:project_detail" project.id %}'>{{ project.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endif %}

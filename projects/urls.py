@@ -4,9 +4,16 @@ from . import views
 
 urlpatterns = [
     # /projects/
-    url(r'^$', views.ProjectIndexView.as_view(), name='project_index'),
+    url(r'^$',
+        views.ProjectIndexView.as_view(),
+        name='project_index'),
+    # /projects/create
+    url(r'create/^$',
+        views.ProjectCreateView.as_view(),
+        name='project_create'),
     # /projects/<project_pk>/browsers/
-    url(r'(?P<project_pk>[0-9]+)/browsers/$', views.BrowserIndexView.as_view(),
+    url(r'(?P<project_pk>[0-9]+)/browsers/$',
+        views.BrowserIndexView.as_view(),
         name='browsers_index'),
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',
@@ -29,6 +36,7 @@ urlpatterns = [
         views.BrowserDetailView.as_view(),
         name='browser_detail'),
     # /projects/<project_pk>/
-    url(r'(?P<pk>[0-9]+)/$', views.ProjectDetailView.as_view(),
+    url(r'(?P<pk>[0-9]+)/$',
+        views.ProjectDetailView.as_view(),
         name='project_detail'),
 ]
