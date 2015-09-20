@@ -56,12 +56,12 @@ def browser_detail(request, project_id, browser_id):
     )
 
 
-def features(request, project_id):
+def features_index(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     features = get_list_or_404(project.feature_set)
     return render(
         request,
-        'projects/features.html',
+        'features/index.html',
         {
             'project': project,
             'features': features
