@@ -1,8 +1,15 @@
 <h1>{{ project.name }}</h1>
+<a href='{% url "projects:browser_add" project.id %}'>Add Browser</a>
 {% if browser_list %}
     <ul>
     {% for browser in browser_list %}
-        <li>{{ browser.pk }} {{ browser.name }}, {{ browser.operating_system }}</li>
+        <li>
+            {{ browser.pk }}
+            {{ browser.name }},
+            {{ browser.operating_system }} |
+            <a href="{% url 'projects:browser_update' project.pk browser.pk %}">Update</a> |
+            <a href="{% url 'projects:browser_delete' project.pk browser.pk %}">Delete</a>
+        </li>
     {% endfor %}
     </ul>
 {% endif %}

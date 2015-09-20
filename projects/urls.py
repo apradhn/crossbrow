@@ -18,7 +18,7 @@ urlpatterns = [
     # /projects/<project_pk>/browsers/<browser_id>/delete
     url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/delete/$',
         views.BrowserDeleteView.as_view(),
-        name='browse_delete'),
+        name='browser_delete'),
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',
         views.FeatureIndexView.as_view(),
