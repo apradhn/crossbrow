@@ -14,7 +14,7 @@
     <ul>
     {% for browser in browsers %}
         <li>
-            <form action='{% url "browsers:update" browser.id %}' method="post">
+            <form action='{% url "browsers:update_result" browser.id %}' method="post">
                 {{ browser.name }}
                 <em>{{ browser.operating_system }}</em>
                 {% csrf_token %}
