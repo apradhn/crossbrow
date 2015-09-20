@@ -88,10 +88,21 @@ class BrowserUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy(
-            'projects:browser_detail',
+            'projects:browsers_index',
             kwargs={
                 'project_pk': self.kwargs['project_pk'],
                 'pk': self.kwargs['pk']
+            })
+
+
+class BrowserDeleteView(DeleteView):
+    model = Browser
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:browser_index',
+            kwargs={
+                'project_pk': self.kwargs['project_pk']
             })
 
 

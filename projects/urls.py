@@ -11,10 +11,14 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/browsers/add/$',
         views.BrowserCreateView.as_view(),
         name='browser_add'),
-    # /projects/<project_pk>/browsers/<browser_id>
+    # /projects/<project_pk>/browsers/<browser_id>/update/
     url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/update/$',
         views.BrowserUpdateView.as_view(),
         name='browser_update'),
+    # /projects/<project_pk>/browsers/<browser_id>/delete
+    url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/delete/$',
+        views.BrowserDeleteView.as_view(),
+        name='browse_delete'),
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',
         views.FeatureIndexView.as_view(),
