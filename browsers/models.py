@@ -24,8 +24,15 @@ class Browser(models.Model):
         (WIN8, 'Windows 8'),
         (WIN10, 'Windows 10'),
     )
+    PASS = 'Pass',
+    FAIL = 'Fail'
+    RESULT_CHOICES = (
+        (PASS, 'Pass'),
+        (FAIL, 'Fail')
+    )
 
-    project = models.ForeignKey(Project, null=True)
+    project = models.ForeignKey(Project,
+                                null=True)
     name = models.CharField(max_length=200,
                             choices=BROWSER_CHOICES,
                             default=CHROME)
@@ -33,6 +40,7 @@ class Browser(models.Model):
     operating_system = models.CharField(max_length=200,
                                         choices=OS_CHOICES,
                                         default=OSX)
+    result = models.CharField(max_length=200, blank=True, choices=RESULT_CHOICES)
 
     def __str__(self):
         return self.name
