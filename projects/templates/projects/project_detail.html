@@ -1,20 +1,20 @@
 <h1>{{ project.name }}</h1>
 
 
-{% if features %}
+{% if feature_list %}
 <h2>Features</h2>
 <ul>
-    {% for feature in features %}
+    {% for feature in feature_list %}
         <li><a href="{% url 'projects:feature_detail' project.id feature.id %}">{{ feature.name }}</a></li>
     {% endfor %}
 </ul>
 {% endif %}
 
 
-{% if browsers %}
+{% if browser_list %}
 <h2>Browsers</h2>
 <ul>
-    {% for browser in browsers %}
+    {% for browser in browser_list %}
         <li>{{ browser.name }}, {{ browser.operating_system }}</li>
     {% endfor %}
 </ul>

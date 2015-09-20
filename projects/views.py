@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, get_list_or_404
+from django.shortcuts import get_object_or_404
 from .models import Project
 from browsers.models import Browser
 from features.models import Feature
@@ -15,74 +15,87 @@ class ProjectDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
-        context['features'] = context['object'].feature_set.all()
-        context['browsers'] = context['object'].browser_set.all()
+        context['feature_list'] = context['object'].feature_set.all()
+        context['browser_list'] = context['object'].browser_set.all()
         return context
 
 
 class BrowserIndexView(generic.ListView):
     model = Browser
 
+    def get_context_data(self, **kwargs):
+        context = super(BrowserIndexView, self).get_context_data(**kwargs)
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        return context
+
 
 class BrowserDetailView(generic.DetailView):
-    template_name = 'browsers/browser_detail.html'
+    model = Browser
 
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, pk=kwargs['project_pk'])
-        browser = get_object_or_404(Browser, pk=kwargs['browser_pk'])
-        context = dict(project=project, browser=browser)
-        return render(request, self.template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(BrowserDetailView, self).get_context_data(**kwargs)
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        return context
 
 
 class FeatureIndexView(generic.ListView):
-    template_name = 'features/feature_list.html'
+    model = Feature
 
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, pk=kwargs['project_pk'])
-        feature_list = project.feature_set.all()
-        context = dict(project=project, feature_list=feature_list)
-        return render(request, self.template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(FeatureIndexView, self).get_context_data(**kwargs)
+        context['feature_list'] = Feature.objects.filter(
+            project__pk=self.kwargs['project_pk'])
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        return context
 
 
 class FeatureDetailView(generic.DetailView):
-    template_name = 'features/feature_detail.html'
+    model = Feature
 
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, pk=kwargs['project_pk'])
-        feature = get_object_or_404(Feature, pk=kwargs['feature_pk'])
-        testcase_list = feature.testcase_set.all()
-        context = dict(
-            project=project,
-            feature=feature,
-            testcase_list=testcase_list)
-        return render(request, self.template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(FeatureDetailView, self).get_context_data(**kwargs)
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        context['testcase_list'] = TestCase.objects.filter(
+            feature__pk=self.kwargs['pk'])
+        return context
 
 
 class TestCaseIndexView(generic.ListView):
-    template_name = 'testcases/testcase_index.html'
+    model = TestCase
 
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, pk=kwargs['project_pk'])
-        feature = get_object_or_404(Feature, pk=kwargs['feature_pk'])
-        testcase_list = feature.testcase_set.all()
-        context = dict(
-            project=project,
-            feature=feature,
-            testcase_list=testcase_list)
-        return render(request, self.template_name, context)
+    def get_queryset(self):
+        return TestCase.objects.filter(feature__pk=self.kwargs['feature_pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super(TestCaseIndexView, self).get_context_data(**kwargs)
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        context['feature'] = get_object_or_404(
+            Feature,
+            pk=self.kwargs['feature_pk'])
+        return context
 
 
 class TestCaseDetailView(generic.DetailView):
-    template_name = 'testcases/testcase_detail.html'
+    model = TestCase
 
-    def get(self, request, *args, **kwargs):
-        project = get_object_or_404(Project, pk=kwargs['project_pk'])
-        feature = get_object_or_404(Feature, pk=kwargs['feature_pk'])
-        testcase = get_object_or_404(TestCase, pk=kwargs['testcase_pk'])
-        browsers = get_list_or_404(project.browser_set)
-        context = dict(
-            project=project,
-            feature=feature,
-            testcase=testcase,
-            browsers=browsers)
-        return render(request, self.template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(TestCaseDetailView, self).get_context_data(**kwargs)
+        context['project'] = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        context['feature'] = get_object_or_404(
+            Feature,
+            pk=self.kwargs['feature_pk'])
+        context['browser_list'] = Browser.objects.filter(
+            project__pk=self.kwargs['project_pk'])
+        return context

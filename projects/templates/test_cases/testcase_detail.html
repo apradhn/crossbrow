@@ -9,10 +9,10 @@
 {% else %}
     <p>None</p>
 {% endif %}
-{% if browsers %}
+{% if browser_list %}
     <h3> Browsers</h3>
     <ul>
-    {% for browser in browsers %}
+    {% for browser in browser_list %}
         <li>
             <form action='{% url "browsers:update_result" browser.id %}' method="post">
                 {{ browser.name }}

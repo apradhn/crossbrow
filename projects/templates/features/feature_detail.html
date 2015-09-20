@@ -5,7 +5,7 @@
     <ul>
         {% for testcase in testcase_list %}
             <li>{{ testcase.description }} <br>
-            <a href="{% url 'projects:test_case_detail' project.id feature.id testcase.id%}">View</a></li>
+            <a href="{% url 'projects:testcase_detail' project.id feature.id testcase.id%}">View</a></li>
         {% endfor %}
     </ul>
 
