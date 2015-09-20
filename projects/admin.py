@@ -24,16 +24,6 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [FeatureInline, BrowserInline]
 
 
-# class TestInline(admin.TabularInline):
-#     model = Test
-#     extra = 1
-
-
-# class FeatureAdmin(admin.ModelAdmin):
-#     inlines = [TestInline]
-#     list_display = ('name', 'project')
-
-
 # class TestAdmin(admin.ModelAdmin):
 #     list_display = ('description', 'feature', 'result')
 
