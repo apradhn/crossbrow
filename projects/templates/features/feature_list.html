@@ -3,6 +3,10 @@
 <a href='{% url "projects:feature_add" project.pk %}'>Add Feature</a>
 <ul>
     {% for feature in feature_list %}
-        <li><a href="{% url 'projects:feature_detail' project.id feature.id %}">{{ feature.name }}</a></li>
+        <li>
+            <a href="{% url 'projects:feature_detail' project.id feature.id %}">
+            {{ feature.name }}</a> |
+            <a href='{% url "projects:feature_update" project.pk feature.pk %}'>Update</a> |
+            </li>
     {% endfor %}
 </ul>

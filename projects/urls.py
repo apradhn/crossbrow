@@ -19,6 +19,11 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/delete/$',
         views.BrowserDeleteView.as_view(),
         name='browser_delete'),
+    # /projects/<project_pk>/browsers/<browser_id>
+    url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/$',
+        views.BrowserDetailView.as_view(),
+        name='browser_detail'),
+
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',
         views.FeatureIndexView.as_view(),
@@ -31,6 +36,11 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/$',
         views.FeatureDetailView.as_view(),
         name='feature_detail'),
+    # /projects/<project_pk>/features/<feature_pk>
+    url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/update/$',
+        views.FeatureUpdateView.as_view(),
+        name='feature_update'),
+
     # /projects/<project_pk>/features/<feature_pk>/testcases
     url(r'(?P<project_pk>[0-9]+)/features/(?P<feature_pk>[0-9]+)/testcases/$',
         views.TestCaseIndexView.as_view(),
@@ -39,10 +49,7 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/features/(?P<feature_pk>[0-9]+)/testcases/(?P<pk>[0-9]+)$',
         views.TestCaseDetailView.as_view(),
         name='testcase_detail'),
-    # /projects/<project_pk>/browsers/<browser_id>
-    url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/$',
-        views.BrowserDetailView.as_view(),
-        name='browser_detail'),
+
     # /projects/
     url(r'^$',
         views.ProjectIndexView.as_view(),
