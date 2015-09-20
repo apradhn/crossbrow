@@ -1,0 +1,8 @@
+<h1>{{ project.name }}</h1>
+{% if browsers %}
+    <ul>
+    {% for browser in browsers %}
+        <li> {{ browser.name }}, {{ browser.operating_system }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}

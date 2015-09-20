@@ -1,0 +1,7 @@
+<ul>
+    {% if browsers %}
+        {% for browser in browsers %}
+        <li>{{ browser.name }}, {{ browser.operating_system }}</li>
+        {% endfor %}
+    {% endif %}
+</ul>
