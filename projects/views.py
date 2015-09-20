@@ -6,7 +6,7 @@ from features.models import Feature
 from test_cases.models import TestCase
 
 
-def projects_index(request):
+def project_index(request):
     projects = get_list_or_404(Project)
     return render(
         request,
@@ -32,7 +32,7 @@ def project_detail(request, project_id):
     )
 
 
-def browsers_index(request, project_id):
+def browser_index(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     browsers = get_list_or_404(project.browser_set)
     return render(
@@ -58,7 +58,7 @@ def browser_detail(request, project_id, browser_id):
     )
 
 
-def features_index(request, project_id):
+def feature_index(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     features = get_list_or_404(project.feature_set)
     return render(
@@ -86,7 +86,7 @@ def feature_detail(request, project_id, feature_id):
     )
 
 
-def test_cases_index(request, project_id, feature_id):
+def test_case_index(request, project_id, feature_id):
     project = get_object_or_404(Project, pk=project_id)
     feature = get_object_or_404(Feature, pk=feature_id)
     test_cases = feature.testcase_set.all()
