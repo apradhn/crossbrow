@@ -7,6 +7,7 @@
             <a href="{% url 'projects:feature_detail' project.id feature.id %}">
             {{ feature.name }}</a> |
             <a href='{% url "projects:feature_update" project.pk feature.pk %}'>Update</a> |
+            <a href='{% url "projects:feature_delete" project.pk feature.pk %}'>Delete</a>
             </li>
     {% endfor %}
 </ul>

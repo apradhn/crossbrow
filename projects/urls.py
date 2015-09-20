@@ -36,10 +36,14 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/$',
         views.FeatureDetailView.as_view(),
         name='feature_detail'),
-    # /projects/<project_pk>/features/<feature_pk>
+    # /projects/<project_pk>/features/<feature_pk>/update
     url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/update/$',
         views.FeatureUpdateView.as_view(),
         name='feature_update'),
+    # /projects/<project_pk>/features/<feature_pk>/delete
+    url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/delete/$',
+        views.FeatureDeleteView.as_view(),
+        name='feature_delete'),
 
     # /projects/<project_pk>/features/<feature_pk>/testcases
     url(r'(?P<project_pk>[0-9]+)/features/(?P<feature_pk>[0-9]+)/testcases/$',

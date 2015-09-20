@@ -164,6 +164,17 @@ class FeatureUpdateView(UpdateView):
             })
 
 
+class FeatureDeleteView(DeleteView):
+    model = Feature
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:feature_index',
+            kwargs={
+                'project_pk': self.kwargs['project_pk']
+            })
+
+
 class TestCaseIndexView(generic.ListView):
     model = TestCase
 
