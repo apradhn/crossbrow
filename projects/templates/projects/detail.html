@@ -5,7 +5,7 @@
 <h2>Features</h2>
 <ul>
     {% for feature in features %}
-        <li>{{ feature.name }}</li>
+        <li><a href="{% url 'projects:feature_detail' project.id feature.id %}">{{ feature.name }}</a></li>
     {% endfor %}
 </ul>
 {% endif %}
