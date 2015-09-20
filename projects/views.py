@@ -81,6 +81,20 @@ class BrowserCreateView(CreateView):
             kwargs={'project_pk': self.kwargs['project_pk']})
 
 
+class BrowserUpdateView(UpdateView):
+    model = Browser
+    fields = ['name', 'operating_system', 'version', 'result']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:browser_detail',
+            kwargs={
+                'project_pk': self.kwargs['project_pk'],
+                'pk': self.kwargs['pk']
+            })
+
+
 class FeatureIndexView(generic.ListView):
     model = Feature
 
