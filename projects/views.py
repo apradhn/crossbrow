@@ -192,6 +192,26 @@ class TestCaseIndexView(generic.ListView):
         return context
 
 
+class TestCaseCreateView(CreateView):
+    model = TestCase
+    fields = ['description']
+
+    def form_valid(self, form):
+        feature = get_object_or_404(
+            Feature,
+            pk=self.kwargs['feature_pk'])
+        form.instance.feature = feature
+        return super(TestCaseCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:testcase_index',
+            kwargs={
+                'project_pk': self.kwargs['project_pk'],
+                'feature_pk': self.kwargs['feature_pk']
+            })
+
+
 class TestCaseDetailView(generic.DetailView):
     model = TestCase
 

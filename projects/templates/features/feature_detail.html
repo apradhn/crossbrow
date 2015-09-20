@@ -2,10 +2,11 @@
 <h2>{{ feature.name }}</h2>
 {% if testcase_list %}
     <h3>Test Cases</h3>
+    <a href='{% url "projects:testcase_add" project.pk feature.pk %}'>Add Test Case</a>
     <ul>
         {% for testcase in testcase_list %}
             <li>{{ testcase.description }} <br>
-            <a href="{% url 'projects:testcase_detail' project.id feature.id testcase.id%}">View</a></li>
+            <a href="{% url 'projects:testcase_detail' project.pk feature.pk testcase.pk %}">View</a></li>
         {% endfor %}
     </ul>
 
