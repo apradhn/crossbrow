@@ -27,6 +27,10 @@ urlpatterns = [
     url(r'(?P<project_id>[0-9]+)/features/(?P<feature_id>[0-9]+)/test_cases/(?P<test_case_id>[0-9]+)$',
         views.test_case_detail,
         name='test_case_detail'),
+    # /projects/<project_id>/features/<feature_id>/test_cases/<test_case_id>/update
+    url(r'(?P<project_id>[0-9]+)/features/(?P<feature_id>[0-9]+)/test_cases/(?P<test_case_id>[0-9]+)/update/$',
+        views.test_case_update_result,
+        name='result'),
     # /projects/<project_id>/browsers/<browser_id>
     url(r'(?P<project_id>[0-9]+)/browsers/(?P<browser_id>[0-9]+)/$',
         views.browser_detail,

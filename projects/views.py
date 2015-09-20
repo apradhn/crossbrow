@@ -116,3 +116,6 @@ def test_case_detail(request, project_id, feature_id, test_case_id):
             'test_case': test_case,
             'browsers': browsers
         })
+
+
+
