@@ -64,6 +64,23 @@ class BrowserDetailView(generic.DetailView):
         return context
 
 
+class BrowserCreateView(CreateView):
+    model = Browser
+    fields = ['name', 'operating_system', 'version']
+
+    def form_valid(self, form):
+        project = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        form.instance.project = project
+        return super(BrowserCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:browser_index',
+            kwargs={'project_pk': self.kwargs['project_pk']})
+
+
 class FeatureIndexView(generic.ListView):
     model = Feature
 

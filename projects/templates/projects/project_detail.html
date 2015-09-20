@@ -13,9 +13,10 @@
 
 {% if browser_list %}
 <h2>Browsers</h2>
+<a href='{% url "projects:browser_add" project.id %}'>Add</a>
 <ul>
     {% for browser in browser_list %}
-        <li>{{ browser.name }}, {{ browser.operating_system }}</li>
+        <li>{{ browser.name }}, {{ browser.operating_system }} </li>
     {% endfor %}
 </ul>
 {% endif %}
