@@ -28,11 +28,6 @@ class ProjectAdmin(admin.ModelAdmin):
 #     list_display = ('description', 'feature', 'result')
 
 
-# class BrowserAdmin(admin.ModelAdmin):
-#     fields = ['name', 'operating_system', 'version', 'project']
-#     list_display = ('name', 'operating_system', 'project')
-
 admin.site.register(Project, ProjectAdmin)
 # admin.site.register(Feature, FeatureAdmin)
 # admin.site.register(Test, TestAdmin)
-# admin.site.register(Browser, BrowserAdmin)
