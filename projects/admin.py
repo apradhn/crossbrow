@@ -24,10 +24,4 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [FeatureInline, BrowserInline]
 
 
-# class TestAdmin(admin.ModelAdmin):
-#     list_display = ('description', 'feature', 'result')
-
-
 admin.site.register(Project, ProjectAdmin)
-# admin.site.register(Feature, FeatureAdmin)
-# admin.site.register(Test, TestAdmin)
