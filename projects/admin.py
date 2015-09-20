@@ -1,46 +1,47 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Project, Feature, Browser, Test
+# from .models import Project, Feature, Browser, Test
+from .models import Project
 
 
-class FeatureInline(admin.TabularInline):
-    model = Feature
-    extra = 1
-    show_change_link = True
+# class FeatureInline(admin.TabularInline):
+#     model = Feature
+#     extra = 1
+#     show_change_link = True
 
 
-class BrowserInline(admin.TabularInline):
-    model = Browser
-    extra = 1
-    fields = ('name', 'operating_system', 'version')
-    show_change_link = True
+# class BrowserInline(admin.TabularInline):
+#     model = Browser
+#     extra = 1
+#     fields = ('name', 'operating_system', 'version')
+#     show_change_link = True
 
 
-class ProjectAdmin(admin.ModelAdmin):
-    inlines = [FeatureInline, BrowserInline]
+# class ProjectAdmin(admin.ModelAdmin):
+#     inlines = [FeatureInline, BrowserInline]
 
 
-class TestInline(admin.TabularInline):
-    model = Test
-    extra = 1
+# class TestInline(admin.TabularInline):
+#     model = Test
+#     extra = 1
 
 
-class FeatureAdmin(admin.ModelAdmin):
-    inlines = [TestInline]
-    list_display = ('name', 'project')
+# class FeatureAdmin(admin.ModelAdmin):
+#     inlines = [TestInline]
+#     list_display = ('name', 'project')
 
 
-class TestAdmin(admin.ModelAdmin):
-    list_display = ('description', 'feature', 'result')
+# class TestAdmin(admin.ModelAdmin):
+#     list_display = ('description', 'feature', 'result')
 
 
-class BrowserAdmin(admin.ModelAdmin):
-    fields = ['name', 'operating_system', 'version', 'project']
-    list_display = ('name', 'operating_system', 'project')
+# class BrowserAdmin(admin.ModelAdmin):
+#     fields = ['name', 'operating_system', 'version', 'project']
+#     list_display = ('name', 'operating_system', 'project')
 
-
-admin.site.register(Project, ProjectAdmin)
-admin.site.register(Feature, FeatureAdmin)
-admin.site.register(Test, TestAdmin)
-admin.site.register(Browser, BrowserAdmin)
+admin.site.register(Project)
+# admin.site.register(Project, ProjectAdmin)
+# admin.site.register(Feature, FeatureAdmin)
+# admin.site.register(Test, TestAdmin)
+# admin.site.register(Browser, BrowserAdmin)
