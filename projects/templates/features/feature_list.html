@@ -1,5 +1,6 @@
 <h1>{{ project }}</h1>
 <h2>Features</h2>
+<a href='{% url "projects:feature_add" project.pk %}'>Add Feature</a>
 <ul>
     {% for feature in feature_list %}
         <li><a href="{% url 'projects:feature_detail' project.id feature.id %}">{{ feature.name }}</a></li>

@@ -134,6 +134,23 @@ class FeatureDetailView(generic.DetailView):
         return context
 
 
+class FeatureCreateView(CreateView):
+    model = Feature
+    fields = ['name', 'description']
+
+    def form_valid(self, form):
+        project = get_object_or_404(
+            Project,
+            pk=self.kwargs['project_pk'])
+        form.instance.project = project
+        return super(FeatureCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:feature_index',
+            kwargs={'project_pk': self.kwargs['project_pk']})
+
+
 class TestCaseIndexView(generic.ListView):
     model = TestCase
 

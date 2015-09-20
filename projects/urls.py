@@ -22,7 +22,11 @@ urlpatterns = [
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',
         views.FeatureIndexView.as_view(),
-        name='features_index'),
+        name='feature_index'),
+    # /projects/<project_pk>/features/add
+    url(r'(?P<project_pk>[0-9]+)/features/add$',
+        views.FeatureCreateView.as_view(),
+        name='feature_add'),
     # /projects/<project_pk>/features/<feature_pk>
     url(r'(?P<project_pk>[0-9]+)/features/(?P<pk>[0-9]+)/$',
         views.FeatureDetailView.as_view(),
