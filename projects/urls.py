@@ -11,11 +11,15 @@ urlpatterns = [
     url(r'add/$',
         views.ProjectCreateView.as_view(),
         name='project_add'),
-    # /projects/<project_pk>/browsers/
+    # /projects/<project_pk>/update/
     url(r'(?P<pk>[0-9]+)/update',
         views.ProjectUpdateView.as_view(),
         name='project_update'),
-    # /proejcts/<project_pk>/update/
+    # /projects/<project_pk>/delete/
+    url(r'(?P<pk>[0-9]+)/delete',
+        views.ProjectDeleteView.as_view(),
+        name='project_delete'),
+    # /projects/<project_pk>/browsers/
     url(r'(?P<project_pk>[0-9]+)/browsers/$',
         views.BrowserIndexView.as_view(),
         name='browsers_index'),

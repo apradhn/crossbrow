@@ -2,7 +2,7 @@
 {% if project_list %}
     <ul>
         {% for project in project_list %}
-            <li><a href="{% url 'projects:project_detail' project.id %}">{{ project.name }}</a></li>
+            <li>{{ project.pk }} | {{ project.name }} | <a href="{% url 'projects:project_detail' project.id %}">Detail</a> | <a href="{% url 'projects:project_delete' project.id %}">Delete</a></li>
         {% endfor %}
     </ul>
 {% else %}
