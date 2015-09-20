@@ -212,6 +212,20 @@ class TestCaseCreateView(CreateView):
             })
 
 
+class TestCaseUpdateView(UpdateView):
+    model = TestCase
+    fields = ['description']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:testcase_index',
+            kwargs={
+                'project_pk': self.kwargs['project_pk'],
+                'feature_pk': self.kwargs['feature_pk']
+            })
+
+
 class TestCaseDetailView(generic.DetailView):
     model = TestCase
 

@@ -57,6 +57,10 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/features/(?P<feature_pk>[0-9]+)/testcases/(?P<pk>[0-9]+)$',
         views.TestCaseDetailView.as_view(),
         name='testcase_detail'),
+    # /projects/<project_pk>/features/<feature_pk>/testcases/<testcase_pk>/update
+    url(r'(?P<project_pk>[0-9]+)/features/(?P<feature_pk>[0-9]+)/testcases/(?P<pk>[0-9]+)/update$',
+        views.TestCaseUpdateView.as_view(),
+        name='testcase_update'),
 
     # /projects/
     url(r'^$',
