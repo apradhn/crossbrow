@@ -12,6 +12,10 @@ urlpatterns = [
         views.ProjectCreateView.as_view(),
         name='project_add'),
     # /projects/<project_pk>/browsers/
+    url(r'(?P<pk>[0-9]+)/update',
+        views.ProjectUpdateView.as_view(),
+        name='project_update'),
+    # /proejcts/<project_pk>/update/
     url(r'(?P<project_pk>[0-9]+)/browsers/$',
         views.BrowserIndexView.as_view(),
         name='browsers_index'),

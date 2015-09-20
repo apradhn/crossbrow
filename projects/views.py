@@ -4,7 +4,7 @@ from browsers.models import Browser
 from features.models import Feature
 from test_cases.models import TestCase
 from django.views import generic
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 
 class ProjectIndexView(generic.ListView):
@@ -24,6 +24,12 @@ class ProjectDetailView(generic.DetailView):
 class ProjectCreateView(CreateView):
     model = Project
     fields = ['name']
+
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    fields = ['name']
+    template_name_suffix = '_update_form'
 
 
 class BrowserIndexView(generic.ListView):
