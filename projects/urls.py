@@ -14,6 +14,9 @@ urlpatterns = [
     # /projects/<project_id>/browsers/<browser_id>
     url(r'(?P<project_id>[0-9]+)/browsers/(?P<browser_id>[0-9]+)/$',
         views.browser_detail, name='browser_detail'),
+    # /projects/<project_id>/features/<feature_id>
+    url(r'(?P<project_id>[0-9]+)/features/(?P<feature_id>[0-9]+)/$',
+        views.feature_detail, name='feature_detail'),
     # /projects/<project_id>/
     url(r'(?P<project_id>[0-9]+)/$', views.project_detail,
         name='project_detail'),

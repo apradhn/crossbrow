@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, get_list_or_404
 
 from .models import Project
 from browsers.models import Browser
+from features.models import Feature
 
 
 def projects_index(request):
@@ -65,5 +66,20 @@ def features_index(request, project_id):
         {
             'project': project,
             'features': features
+        }
+    )
+
+
+def feature_detail(request, project_id, feature_id):
+    project = get_object_or_404(Project, pk=project_id)
+    feature = get_object_or_404(Feature, pk=feature_id)
+    test_cases = feature.test_case_set
+    return render(
+        request,
+        'features/detail.html',
+        {
+            'project': project,
+            'feature': feature,
+            'test_cases': test_cases
         }
     )
