@@ -2,7 +2,7 @@ from django.db import models
 from features.models import Feature
 
 
-class Test(models.Model):
+class TestCase(models.Model):
     PASS = 'P'
     FAIL = 'F'
     RESULTS = (
