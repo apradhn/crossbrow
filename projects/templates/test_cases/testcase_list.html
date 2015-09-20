@@ -7,7 +7,8 @@
         <li>
             {{ testcase.description }} |
             <a href='{% url "projects:testcase_detail" project.pk feature.pk testcase.pk %}'>View</a> |
-            <a href='{% url "projects:testcase_update" project.pk feature.pk testcase.pk %}'>Update</a>
+            <a href='{% url "projects:testcase_update" project.pk feature.pk testcase.pk %}'>Update</a> |
+            <a href='{% url "projects:testcase_delete" project.pk feature.pk testcase.pk %}'>Delete</a>
         </li>
     {% endfor %}
 </ul>

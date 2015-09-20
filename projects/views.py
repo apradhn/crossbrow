@@ -226,6 +226,18 @@ class TestCaseUpdateView(UpdateView):
             })
 
 
+class TestCaseDeleteView(DeleteView):
+    model = TestCase
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:testcase_index',
+            kwargs={
+                'project_pk': self.kwargs['project_pk'],
+                'feature_pk': self.kwargs['feature_pk']
+            })
+
+
 class TestCaseDetailView(generic.DetailView):
     model = TestCase
 
