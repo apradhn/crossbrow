@@ -1,0 +1,8 @@
+<p>Update Browser Result</p>
+<form action="" method="post">{% csrf_token %}
+    <p>{{ object.name }}</p>
+    <p>{{ object.operating_system }}</p>
+    {{ form.as_p }}
+    <input type="hidden" name="browser_pk" value="{{ browser_pk }}">
+    <input type="submit" value="Update Result">
+</form>

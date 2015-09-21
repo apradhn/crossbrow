@@ -6,6 +6,7 @@ from test_cases.models import TestCase
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import redirect
 
 
 class ProjectIndexView(generic.ListView):
@@ -91,6 +92,21 @@ class BrowserUpdateView(UpdateView):
             'projects:browsers_index',
             kwargs={
                 'project_pk': self.kwargs['project_pk'],
+                'pk': self.kwargs['pk']
+            })
+
+
+class BrowserUpdateResultView(UpdateView):
+    model = Browser
+    fields = ['result']
+    template_name_suffix = '_update_result_form'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'projects:testcase_detail',
+            kwargs={
+                'project_pk': self.kwargs['project_pk'],
+                'feature_pk': self.kwargs['feature_pk'],
                 'pk': self.kwargs['pk']
             })
 
@@ -251,4 +267,15 @@ class TestCaseDetailView(generic.DetailView):
             pk=self.kwargs['feature_pk'])
         context['browser_list'] = Browser.objects.filter(
             project__pk=self.kwargs['project_pk'])
+        context['request'] = self.request
         return context
+
+    def post(self, request, *args, **kwargs):
+        browser = Browser.objects.get(pk=request.POST['browser_pk'])
+        browser.result = request.POST['result']
+        browser.save()
+        return redirect(
+            'projects:testcase_detail',
+            project_pk=kwargs['project_pk'],
+            feature_pk=kwargs['feature_pk'],
+            pk=kwargs['pk'])

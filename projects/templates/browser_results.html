@@ -1,0 +1,9 @@
+{% load browser_extras %}
+<ul>
+    <p>{{ project }}</p>
+    <p>{{ feature }}</p>
+    <p>{{ testcase }}</p>
+    {% for browser in browsers %}
+        <li> {% show_browser_update_result project feature testcase browser request %}</li>
+    {% endfor %}
+</ul>
