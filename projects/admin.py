@@ -16,7 +16,7 @@ class FeatureInline(admin.TabularInline):
 class BrowserInline(admin.TabularInline):
     model = Browser
     extra = 1
-    fields = ('name', 'operating_system', 'version')
+    fields = ('name', 'operating_system', 'version', 'result')
     show_change_link = True
 
 

@@ -23,6 +23,10 @@ urlpatterns = [
     url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/$',
         views.BrowserDetailView.as_view(),
         name='browser_detail'),
+    # /projects/<project_pk>/browsers/<browser_id>/update_result/
+    url(r'(?P<project_pk>[0-9]+)/browsers/(?P<pk>[0-9]+)/update_result/$',
+        views.BrowserUpdateResultView.as_view(),
+        name='browser_update_result'),
 
     # /projects/<project_pk>/features/
     url(r'(?P<project_pk>[0-9]+)/features/$',

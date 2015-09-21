@@ -1,33 +1,17 @@
+{% load browser_extras %}
 <h1>{{ project.name }}</h1>
 <h2>{{ feature.name }}</h2>
 <h3>Test Case</h3>
 <h4>Description</h4>
-<p>{{ test_case.description }}</p>
+<p>{{ testcase.description }}</p>
 <h4>Result</h4>
-{% if test_case.result %}
-    <p>{{ test_case.result }}</p>
+{% if testcase.result %}
+    <p>{{ testcase.result }}</p>
 {% else %}
     <p>None</p>
 {% endif %}
 {% if browser_list %}
     <h3> Browsers</h3>
-    <ul>
-    {% for browser in browser_list %}
-        <li>
-            <form action='{% url "browsers:update_result" browser.id %}' method="post">
-                {{ browser.name }}
-                <em>{{ browser.operating_system }}</em>
-                {% csrf_token %}
-                    <input type="radio" name="browser-result" id="browser-result-pass" value="Pass" checked/>
-                    <label for="browser-result-pass">Pass</label>
-                    <input type="radio" name="browser-result" id="browser-result-fail" value="Fail" />
-                    <input type="hidden" name="project-id" value="{{ project.id }}">
-                    <input type="hidden" name="feature-id" value="{{ feature.id }}">
-                    <input type="hidden" name="test-case-id" value="{{ test_case.id }}">
-                    <label for="browser-result-fail">Fail</label>
-                <input type="submit" value="Update">
-            </form>
-        </li>
-    {% endfor %}
-    </ul>
+    {% show_browsers project feature testcase request %}
+
 {% endif %}
